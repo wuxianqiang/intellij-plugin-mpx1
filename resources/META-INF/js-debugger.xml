@@ -1,0 +1,5 @@
+<idea-plugin package="com.hxz.mpxjs.run">
+  <extensions defaultExtensionNs="com.jetbrains">
+    <javaScriptDebugAware implementation="com.hxz.mpxjs.run.MpxDebugAware"/>
+  </extensions>
+</idea-plugin>

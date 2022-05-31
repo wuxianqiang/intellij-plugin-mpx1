@@ -1,0 +1,975 @@
+{
+  "framework": "mpx",
+  "name": "mpx",
+  "version": "3.0.0",
+  "js-types-syntax": "typescript",
+  "description-markup": "markdown",
+  "default-icon": "icons/mpx.svg",
+  "framework-config": {
+    "enable-when": {
+      "node-packages": [
+      ],
+      "file-extensions": [
+        "mpx"
+      ],
+      "ide-libraries": [
+      ]
+    }
+  },
+  "contributions": {
+    "html": {
+      "elements": [
+        {
+          "name": "Mpx component",
+          "pattern": {
+            "items": "/html/mpx-components"
+          },
+          "attributes": [
+            {
+              "name": "Component property",
+              "pattern": {
+                "or": [
+                  {
+                    "items": "props",
+                    "priority": "highest"
+                  },
+                  {
+                    "delegate": "mpx-custom-prop",
+                    "priority": "lowest"
+                  }
+                ]
+              },
+              "value": {
+                "type": "of-match",
+                "kind": "plain"
+              },
+              "mpx-custom-prop": {
+                "name": "Custom Mpx component property",
+                "pattern": "(?!wx:).*",
+                "doc-hide-pattern": true,
+                "attribute-value": {
+                  "required": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "component",
+          "description": "内建组件",
+          "doc-url": "https://mpxjs.cn/api/builtIn.html#component",
+          "attributes": [
+            {
+              "name": "is",
+              "description": "动态渲染组件，通过改变is的值，来渲染不同的组件",
+              "value": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "slot",
+          "description": "内建组件",
+          "doc-url": "https://mpxjs.cn/api/builtIn.html#slot",
+          "attributes": [
+            {
+              "name": "name",
+              "description": "用于命名插槽",
+              "value": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "view",
+          "description": "视图容器",
+          "doc-url": "https://developers.weixin.qq.com/miniprogram/dev/component/view.html",
+          "attributes": [
+            {
+              "name": "hover-class",
+              "description": "指定按下去的样式类。当 hover-class=\"none\" 时，没有点击态效果，1.0.0",
+              "value": {
+                "type": "string",
+                "default": "none"
+              }
+            },
+            {
+              "name": "hover-stop-propagation",
+              "description": "指定是否阻止本节点的祖先节点出现点击态，1.5.0",
+              "value": {
+                "type": "boolean",
+                "default": "false"
+              }
+            },
+            {
+              "name": "hover-start-time",
+              "description": "按住后多久出现点击态，单位毫秒，1.0.0",
+              "value": {
+                "type": "number",
+                "default": "50"
+              }
+            },
+            {
+              "name": "hover-stay-time",
+              "description": "手指松开后点击态保留时间，单位毫秒，1.0.0",
+              "value": {
+                "type": "number",
+                "default": "400"
+              }
+            }
+          ]
+        }
+      ],
+      "attributes": [
+        {
+          "name": "Mpx directive",
+          "description": "模板指令",
+          "doc-url": "https://mpxjs.cn/api/directives.html",
+          "virtual": true,
+          "value": {
+            "kind": "expression",
+            "type": "any",
+            "required": false
+          },
+          "pattern": {
+            "items": "/html/mpx-directives",
+            "template": [
+              "wx:",
+              "#item:Mpx directive",
+              {
+                "delegate": "argument",
+                "template": [
+                  "#item:argument"
+                ],
+                "required": false,
+                "proximity": 5
+              }
+            ]
+          }
+        },
+        {
+          "name": "bindtap",
+          "priority": "low"
+        },
+        {
+          "name": "style",
+          "priority": "low"
+        },
+        {
+          "name": "bindtouchstart",
+          "priority": "low"
+        },
+        {
+          "name": "bindtouchmove",
+          "priority": "low"
+        },
+        {
+          "name": "bindtouchcancel",
+          "priority": "low"
+        },
+        {
+          "name": "bindtouchend",
+          "priority": "low"
+        },
+        {
+          "name": "bindlongpress",
+          "priority": "low"
+        },
+        {
+          "name": "bindlongtap",
+          "priority": "low"
+        },
+        {
+          "name": "bindtransitionend",
+          "priority": "low"
+        },
+        {
+          "name": "bindanimationstart",
+          "priority": "low"
+        },
+        {
+          "name": "bindanimationiteration",
+          "priority": "low"
+        },
+        {
+          "name": "bindanimationend",
+          "priority": "low"
+        },
+        {
+          "name": "bindtouchforcechange",
+          "priority": "low"
+        },
+        {
+          "name": "bind:tap",
+          "priority": "low"
+        },
+        {
+          "name": "bind:touchstart",
+          "priority": "low"
+        },
+        {
+          "name": "bind:touchmove",
+          "priority": "low"
+        },
+        {
+          "name": "bind:touchcancel",
+          "priority": "low"
+        },
+        {
+          "name": "bind:touchend",
+          "priority": "low"
+        },
+        {
+          "name": "bind:longpress",
+          "priority": "low"
+        },
+        {
+          "name": "bind:longtap",
+          "priority": "low"
+        },
+        {
+          "name": "bind:transitionend",
+          "priority": "low"
+        },
+        {
+          "name": "bind:animationstart",
+          "priority": "low"
+        },
+        {
+          "name": "bind:animationiteration",
+          "priority": "low"
+        },
+        {
+          "name": "bind:animationend",
+          "priority": "low"
+        },
+        {
+          "name": "bind:touchforcechange",
+          "priority": "low"
+        },
+        {
+          "name": "catchtap",
+          "priority": "low"
+        },
+        {
+          "name": "catchtouchstart",
+          "priority": "low"
+        },
+        {
+          "name": "catchtouchmove",
+          "priority": "low"
+        },
+        {
+          "name": "catchtouchcancel",
+          "priority": "low"
+        },
+        {
+          "name": "catchtouchend",
+          "priority": "low"
+        },
+        {
+          "name": "catchlongpress",
+          "priority": "low"
+        },
+        {
+          "name": "catchlongtap",
+          "priority": "low"
+        },
+        {
+          "name": "catchtransitionend",
+          "priority": "low"
+        },
+        {
+          "name": "catchanimationstart",
+          "priority": "low"
+        },
+        {
+          "name": "catchanimationiteration",
+          "priority": "low"
+        },
+        {
+          "name": "catchanimationend",
+          "priority": "low"
+        },
+        {
+          "name": "catchtouchforcechange",
+          "priority": "low"
+        },
+        {
+          "name": "catch:tap",
+          "priority": "low"
+        },
+        {
+          "name": "catch:touchstart",
+          "priority": "low"
+        },
+        {
+          "name": "catch:touchmove",
+          "priority": "low"
+        },
+        {
+          "name": "catch:touchcancel",
+          "priority": "low"
+        },
+        {
+          "name": "catch:touchend",
+          "priority": "low"
+        },
+        {
+          "name": "catch:longpress",
+          "priority": "low"
+        },
+        {
+          "name": "catch:longtap",
+          "priority": "low"
+        },
+        {
+          "name": "catch:transitionend",
+          "priority": "low"
+        },
+        {
+          "name": "catch:animationstart",
+          "priority": "low"
+        },
+        {
+          "name": "catch:animationiteration",
+          "priority": "low"
+        },
+        {
+          "name": "catch:animationend",
+          "priority": "low"
+        },
+        {
+          "name": "catch:touchforcechange",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindtap",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindtouchstart",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindtouchmove",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindtouchcancel",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindtouchend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindlongpress",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindlongtap",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindtransitionend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindanimationstart",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindanimationiteration",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindanimationend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bindtouchforcechange",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:tap",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:touchstart",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:touchmove",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:touchcancel",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:touchend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:longpress",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:longtap",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:transitionend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:animationstart",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:animationiteration",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:animationend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-bind:touchforcechange",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchtap",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchtouchstart",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchtouchmove",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchtouchcancel",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchtouchend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchlongpress",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchlongtap",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchtransitionend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchanimationstart",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchanimationiteration",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchanimationend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catchtouchforcechange",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:tap",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:touchstart",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:touchmove",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:touchcancel",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:touchend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:longpress",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:longtap",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:transitionend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:animationstart",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:animationiteration",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:animationend",
+          "priority": "low"
+        },
+        {
+          "name": "capture-catch:touchforcechange",
+          "priority": "low"
+        }
+      ],
+      "mpx-file-top-elements": [
+        {
+          "name": "style",
+          "priority": "high",
+          "description": "The top-level `<style>` element serves as a container for the component styles.",
+          "attributes": [
+            {
+              "name": "lang"
+            },
+            {
+              "name": "src"
+            },
+            {
+              "name": "module",
+              "value": {
+                "required": false
+              }
+            },
+            {
+              "name": "scoped",
+              "value": {
+                "kind": "no-value"
+              }
+            }
+          ]
+        },
+        {
+          "name": "script",
+          "priority": "high",
+          "description": "The top-level `<script>` element serves as a container for the component code.",
+          "attributes": [
+            {
+              "name": "lang"
+            },
+            {
+              "name": "id"
+            },
+            {
+              "name": "src"
+            },
+            {
+              "name": "setup",
+              "value": {
+                "kind": "no-value"
+              }
+            }
+          ]
+        },
+        {
+          "name": "template",
+          "priority": "high",
+          "description": "The top-level `<template>` element serves as a container for the component template contents.",
+          "attributes": [
+            {
+              "name": "lang"
+            },
+            {
+              "name": "src"
+            },
+            {
+              "name": "functional",
+              "value": {
+                "kind": "no-value"
+              }
+            }
+          ]
+        }
+      ],
+      "mpx-components": [
+        {
+          "name": "Transition components base",
+          "abstract": true,
+          "props": [
+            {
+              "name": "name",
+              "description": "Used to automatically generate transition CSS class names. e.g. `name: 'fade'` will auto expand to `.fade-enter`, `.fade-enter-active`, etc.",
+              "type": "string"
+            },
+            {
+              "name": "appear",
+              "description": "Whether to apply transition on initial render.",
+              "type": "boolean",
+              "default": "false"
+            },
+            {
+              "name": "css",
+              "description": "Whether to apply CSS transition classes. Defaults to `true`. If set to `false`, will only trigger JavaScript hooks registered via component events.",
+              "default": "true",
+              "type": "boolean"
+            },
+            {
+              "name": "type",
+              "description": "Specifies the type of transition events to wait for to determine transition end timing. Available values are `\"transition\"` and `\"animation\"`. By default, it will automatically detect the type that has a longer duration.",
+              "type": [
+                "\"transition\"",
+                "\"animation\""
+              ]
+            },
+            {
+              "name": "duration",
+              "description": "Specifies the duration of transition. By default, Mpx waits for the first `transitionend` or `animationend` event on the root transition element.",
+              "type": [
+                "number",
+                "{ enter: number, leave: number }"
+              ]
+            },
+            {
+              "name": "enterFromClass",
+              "type": "string"
+            },
+            {
+              "name": "leaveFromClass",
+              "type": "string"
+            },
+            {
+              "name": "appearClass",
+              "type": "string"
+            },
+            {
+              "name": "enterToClass",
+              "type": "string"
+            },
+            {
+              "name": "leaveToClass",
+              "type": "string"
+            },
+            {
+              "name": "appearToClass",
+              "type": "string"
+            },
+            {
+              "name": "enterActiveClass",
+              "type": "string"
+            },
+            {
+              "name": "leaveActiveClass",
+              "type": "string"
+            },
+            {
+              "name": "appearActiveClass",
+              "type": "string"
+            }
+          ],
+          "events": [
+            {
+              "name": "before-enter"
+            },
+            {
+              "name": "before-leave"
+            },
+            {
+              "name": "enter"
+            },
+            {
+              "name": "leave"
+            },
+            {
+              "name": "appear"
+            },
+            {
+              "name": "after-enter"
+            },
+            {
+              "name": "after-leave"
+            },
+            {
+              "name": "after-appear"
+            },
+            {
+              "name": "enter-cancelled"
+            },
+            {
+              "name": "leave-cancelled"
+            },
+            {
+              "name": "appear-cancelled"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ]
+        },
+        {
+          "name": "Transition",
+          "extends": "/html/mpx-components/Transition components base",
+          "description": "`<transition>` serve as transition effects for *single* element/component. The `<transition>` only applies the transition behavior to the wrapped content inside; it doesn't render an extra DOM element, or show up in the inspected component hierarchy.",
+          "doc-url": "https://v3.mpxjs.org/api/built-in-components.html#transition",
+          "props": [
+            {
+              "name": "mode",
+              "description": "Controls the timing sequence of leaving/entering transitions. Available modes are `\"out-in\"` and `\"in-out\"`; defaults to simultaneous.",
+              "attribute-value": {
+                "type": "enum"
+              },
+              "values": [
+                {
+                  "name": "out-in",
+                  "description": "Current element transitions out first, then when complete, the new element transitions in."
+                },
+                {
+                  "name": "in-out",
+                  "description": "New element transitions in first, then when complete, the current element transitions out."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "TransitionGroup",
+          "extends": "/html/mpx-components/Transition components base",
+          "description": "`<transition-group>` serve as transition effects for *multiple* elements/components. The `<transition-group>` renders a real DOM element. By default it renders a `<span>`, and you can configure what element it should render via the `tag` attribute.\n\nNote that every child in a `<transition-group>` must be *uniquely keyed* for the animations to work properly.",
+          "doc-url": "https://v3.mpxjs.org/api/built-in-components.html#transition-group",
+          "props": [
+            {
+              "name": "tag",
+              "default": "\"span\"",
+              "type": "string"
+            },
+            {
+              "name": "moveClass",
+              "description": "Overwrite CSS class applied during moving transition"
+            }
+          ]
+        },
+        {
+          "name": "image",
+          "description": "媒体组件",
+          "doc-url": "https://developers.weixin.qq.com/miniprogram/dev/component/image.html",
+          "props": [
+            {
+              "name": "mode",
+              "description": "图片裁剪、缩放的模式",
+              "attribute-value": {
+                "type": "enum",
+                "default": "scaleToFill"
+              },
+              "values": [
+                {
+                  "name": "scaleToFill",
+                  "description": "缩放模式，不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素"
+                },
+                {
+                  "name": "aspectFit",
+                  "description": "缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来"
+                },
+                {
+                  "name": "aspectFill",
+                  "description": "缩放模式，保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取"
+                },
+                {
+                  "name": "widthFix",
+                  "description": "缩放模式，宽度不变，高度自动变化，保持原图宽高比不变"
+                },
+                {
+                  "name": "heightFix",
+                  "description": "缩放模式，高度不变，宽度自动变化，保持原图宽高比不变，2。10。3"
+                },
+                {
+                  "name": "top",
+                  "description": "裁剪模式，不缩放图片，只显示图片的顶部区域"
+                },
+                {
+                  "name": "bottom",
+                  "description": "裁剪模式，不缩放图片，只显示图片的底部区域"
+                },
+                {
+                  "name": "center",
+                  "description": "裁剪模式，不缩放图片，只显示图片的中间区域"
+                },
+                {
+                  "name": "right",
+                  "description": "裁剪模式，不缩放图片，只显示图片的左边区域"
+                },
+                {
+                  "name": "left",
+                  "description": "裁剪模式，不缩放图片，只显示图片的右边区域"
+                },
+                {
+                  "name": "top left",
+                  "description": "裁剪模式，不缩放图片，只显示图片的左上边区域"
+                },
+                {
+                  "name": "top right",
+                  "description": "裁剪模式，不缩放图片，只显示图片的右上边区域"
+                },
+                {
+                  "name": "bottom left",
+                  "description": "裁剪模式，不缩放图片，只显示图片的左下边区域"
+                },
+                {
+                  "name": "bottom right",
+                  "description": "裁剪模式，不缩放图片，只显示图片的右下边区域"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "mpx-directives": [
+        {
+          "name": "show",
+          "description": " 与 wx:if 所不同的是不会移除节点，而是设置节点的 style 为 display: none",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-show",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "if",
+          "description": "根据表达式的值的 truthiness 来有条件地渲染元素",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-if",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "else",
+          "description": "前一兄弟元素必须有 wx:if 或 wx:elif，为 wx:if 或者 wx:elif 添加 wx:else 块",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-if",
+          "attribute-value": {
+            "kind": "no-value"
+          }
+        },
+        {
+          "name": "elif",
+          "description": "前一兄弟元素必须有 wx:if 或 wx:elif，表示 wx:if 的 wx:elif 块。可以链式调用",
+          "doc-url": "https://v3.mpxjs.org/api/directives.html#v-else-if",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "for",
+          "description": "在组件上使用 wx:for 控制属性绑定一个数组，即可使用数组中各项的数据重复渲染该组件。默认数组的当前项的下标变量名默认为 index，数组当前项的变量名默认为 item",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-for",
+          "attribute-value": {
+            "type": "void",
+            "required": true
+          }
+        },
+        {
+          "name": "key",
+          "description": "如果列表中项目的位置会动态改变或者有新的项目添加到列表中，并且希望列表中的项目保持自己的特征和状态，需要使用 wx:key 来指定列表中项目的唯一的标识符。 注意：如不提供 wx:key，会报一个 warning， 如果明确知道该列表是静态，或者不必关注其顺序，可以选择忽略",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-key",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "for-index",
+          "description": "使用 wx:for-index 可以指定数组当前下标的变量名",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-for-index",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "for-item",
+          "description": "使用 wx:for-item 可以指定数组当前元素的变量名",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-for-item",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "ref",
+          "description": "Mpx 提供了 wx:ref=xxx 来更方便获取 WXML 节点信息的对象。在 JS 里只需要通过 this.$refs.xxx 即可获取节点",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-ref",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "class",
+          "description": "绑定HTML Class: 类似 mpx 的 class 绑定",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-class",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "style",
+          "description": "wx:style 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。CSS property 名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case) 来命名",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-style",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "model-event",
+          "description": "wx:model 默认监听 input 事件，可以使用 wx:model-event 定义 wx:model 指令对应的事件",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-model-event",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "model-prop",
+          "description": "wx:model 默认使用 value 属性传值，使用 wx:model-prop 定义 wx:model 指令对应的属性",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-model-prop",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "model-value-path",
+          "description": "指定 wx:model 双向绑定时的取值路径； 并非所有的组件都会按微信的标注格式 event.target.value 来传值，例如 vant 的 input 组件，值是通过抛出 event.target 本身传递的，这时我们可以使用 wx:model-value-path 重新指定取值路径",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-model-value-path",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "model-filter",
+          "description": "在使用 wx:model 时我们可能需要像 Mpx 的 .trim 、.lazy 这样的修饰符来对双向数据绑定的数据进行过滤和修饰；Mpx 通过增强指令 wx:model-filter 可以实现这一功能； 该指令可以绑定内建的 filter 或者自定义的 filter 方法，该方法接收过滤前的值，返回过滤操作后的值",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-model-filter",
+          "attribute-value": {
+            "required": true
+          }
+        },
+        {
+          "name": "model",
+          "description": "除了小程序原生指令之外，mpx 基于 input 事件提供了一个指令 wx:model, 用于双向绑定",
+          "doc-url": "https://mpxjs.cn/api/directives.html#wx-model",
+          "attribute-value": {
+            "type": "any",
+            "required": true
+          }
+        }
+      ]
+    }
+  }
+}

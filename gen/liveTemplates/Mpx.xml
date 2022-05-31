@@ -1,0 +1,623 @@
+<templateSet group="mpx-vscode-snippets">
+  <template name="vrouter" value="import Mpx from &apos;mpx&apos;;&#10;import MpxRouter from &apos;mpx-router&apos;;&#10;&#10;Mpx.use(MpxRouter);&#10;&#10;export const router = new MpxRouter({&#10;	base: &apos;/&apos;,&#10;	mode: &apos;history&apos;,&#10;	routes: [&#10;		{ path: &apos;/path&apos;, component: component }&#10;	]&#10;});" description="Base for Mpx Router" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vroute-named" value="{&#10;	path: &apos;$pathName$&apos;,&#10;	name: &apos;$routeName$&apos;,&#10;	component: () =&gt; import(&apos;./$pathToComponent$&apos;),&#10;}," description="Mpx Router route with per route code-splitting" toReformat="true" toShortenFQNames="true">
+    <variable name="pathName" expression="" defaultValue="&quot;pathName&quot;" alwaysStopAt="true" />
+    <variable name="routeName" expression="" defaultValue="&quot;routeName&quot;" alwaysStopAt="true" />
+    <variable name="pathToComponent" expression="" defaultValue="&quot;pathToComponent&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vaftereach" value="router.afterEach((to, from) =&gt; {&#10;	&#10;});" description="Mpx Router global guards afterEach" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vbeforeeach" value="router.beforeEach((to, from, next) =&gt; {&#10;	$1$&#10;});" description="Mpx Router global guards beforeEach" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;next();&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vbeforeenter" value="beforeEnter(to, from, next) {&#10;	$1$&#10;}," description="Mpx Router per-route guard beforeEnter" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;next();&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vbeforeresolve" value="router.beforeResolve((to, from, next) =&gt; {&#10;	$1$&#10;});" description="Mpx Router global guards beforeResolve" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;next();&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vbeforerouteenter" value="beforeRouteEnter(to, from, next) {&#10;	next(vm =&gt; {${1:}});&#10;}," description="Mpx Router component guards beforeRouteEnter" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vbeforerouteleave" value="beforeRouteLeave(to, from, next) {&#10;	$1$&#10;}," description="Mpx Router component guards beforeRouteLeave" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;next();&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vbeforerouteupdate" value="beforeRouteUpdate(to, from, next) {&#10;	$1$&#10;}," description="Mpx Router component guards beforeRouteUpdate" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;next();&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vscrollbehavior" value="scrollBehavior(to, from, savedPosition) {&#10;	if(savedPosition) {&#10;		return savedPosition;&#10;	} else {&#10;		return { x: 0, y: 0 };&#10;	}&#10;}," description="Mpx Router scrollBehavior" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script-router" value="true" />
+    </context>
+  </template>
+  <template name="vstore-import" value="import { store } from &apos;./store/index&apos;;" description="import mpxx store into main.js" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script-mpxx" value="true" />
+    </context>
+  </template>
+  <template name="vaction" value="actions: {&#10;	$updateValue$({commit}, $payload$) {&#10;		commit(&apos;$updateValue$&apos;, $payload$);&#10;	}&#10;}" description="mpxx action" toReformat="true" toShortenFQNames="true">
+    <variable name="updateValue" expression="" defaultValue="&quot;updateValue&quot;" alwaysStopAt="true" />
+    <variable name="payload" expression="" defaultValue="&quot;payload&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-mpxx" value="true" />
+    </context>
+  </template>
+  <template name="vgetter" value="getters: {&#10;	$value$: state =&gt; {&#10;		return state.$value$;&#10;	}&#10;}" description="mpxx getter" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-mpxx" value="true" />
+    </context>
+  </template>
+  <template name="vmodule" value="export default {&#10;	state: {&#10;		value: &apos;my value&apos;&#10;	},&#10;	getters: {&#10;		value: state =&gt; {&#10;			return state.value;&#10;		}&#10;	},&#10;	mutations: {&#10;		updateValue(state, payload) {&#10;			state.value = payload;&#10;		}&#10;	},&#10;	actions: {&#10;		updateValue({commit}, payload) {&#10;			commit(&apos;updateValue&apos;, payload);&#10;		}&#10;	}&#10;};" description="mpxx module" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script-mpxx" value="true" />
+    </context>
+  </template>
+  <template name="vmutation" value="mutations: {&#10;	$updateValue$(state, $payload$) {&#10;		state.$value$ = $payload$;&#10;	}&#10;}" description="mpxx mutation" toReformat="true" toShortenFQNames="true">
+    <variable name="updateValue" expression="" defaultValue="&quot;updateValue&quot;" alwaysStopAt="true" />
+    <variable name="payload" expression="" defaultValue="&quot;payload&quot;" alwaysStopAt="true" />
+    <variable name="value" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-mpxx" value="true" />
+    </context>
+  </template>
+  <template name="vstore" value="import Mpx from &apos;mpx&apos;;&#10;import Mpxx from &apos;mpxx&apos;;&#10;&#10;Mpx.use(Mpxx);&#10;&#10;export const store = new Mpxx.Store({&#10;	state: {&#10;		$key$: $value$&#10;	}&#10;});" description="Base for Mpxx store" toReformat="true" toShortenFQNames="true">
+    <variable name="key" expression="" defaultValue="&quot;key&quot;" alwaysStopAt="true" />
+    <variable name="value" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script-mpxx" value="true" />
+    </context>
+  </template>
+  <template name="vstore2" value="export const state = () =&gt; ({&#10;	value: &apos;myvalue&apos;&#10;})&#10;&#10;export const getters = {&#10;	getterValue: state =&gt; {&#10;		return state.value&#10;	}&#10;}&#10;&#10;export const mutations = {&#10;	updateValue: (state, payload) =&gt; {&#10;		state.value = payload&#10;	}&#10;}&#10;&#10;export const actions = {&#10;	updateActionValue({ commit }) {&#10;		commit(&apos;updateValue&apos;, payload)&#10;	}&#10;}" description="mpxx store 2" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script-mpxx" value="true" />
+    </context>
+  </template>
+  <template name="vplugin" value="import Mpx from &apos;mpx&apos;&#10;import $MpxCompositionApi$ from &apos;$2$&apos;&#10;&#10;Mpx.use($MpxCompositionApi$)" description="Import a plugin to main.js or plugins file" toReformat="true" toShortenFQNames="true">
+    <variable name="2" expression="" defaultValue="&quot;@mpx/composition-api&quot;" alwaysStopAt="true" />
+    <variable name="MpxCompositionApi" expression="" defaultValue="&quot;MpxCompositionApi&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vtest" value="import Mpx from &apos;mpx&apos;;&#10;import $HelloWorld$ from &apos;./components/$HelloWorld$&apos;;&#10;&#10;describe(&apos;$HelloWorld$.mpx&apos;, () =&gt; {&#10;	it(&apos;$2$&apos;, () =&gt; {&#10;		const Constructor = Mpx.extend($HelloWorld$);&#10;		const vm = new Constructor().$mount$();&#10;		expect(vm.$el$.querySelector(&apos;.hello h1&apos;).textContent)&#10;			.to.equal($3$);&#10;	});&#10;});" description="unit test component" toReformat="true" toShortenFQNames="true">
+    <variable name="2" expression="" defaultValue="&quot;should render correct contents&quot;" alwaysStopAt="true" />
+    <variable name="3" expression="" defaultValue="&quot;'Welcome to Your Mpx.js App'&quot;" alwaysStopAt="true" />
+    <variable name="mount" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="el" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="HelloWorld" expression="" defaultValue="&quot;HelloWorld&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3useinoptions" value="import { $component$ } from &apos;@/composables/$component$.js&apos;&#10;&#10;export default {&#10;	setup () {&#10;		const { $name$ } = $component$()&#10;	&#10;		return {&#10;			$name$&#10;		}&#10;	}&#10;}" description="Use Composition API within Options API" toReformat="true" toShortenFQNames="true">
+    <variable name="component" expression="" defaultValue="&quot;component&quot;" alwaysStopAt="true" />
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vcommit" value="$mutationName$() {&#10;	this.\$store$.commit(&apos;$mutationName$&apos;, $payload$);&#10;}" description="commit to mpxx store in methods for mutation" toReformat="true" toShortenFQNames="true">
+    <variable name="store" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="mutationName" expression="" defaultValue="&quot;mutationName&quot;" alwaysStopAt="true" />
+    <variable name="payload" expression="" defaultValue="&quot;payload&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3computed" value="const $name$ = computed(() =&gt; {&#10;	return $2$&#10;})" description="Mpx Composition api - computed" toReformat="true" toShortenFQNames="true">
+    <variable name="2" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3reactive" value="const $name$ = reactive({&#10;	$count$: $END$&#10;})" description="Mpx Composition api - reactive" toReformat="true" toShortenFQNames="true">
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="count" expression="" defaultValue="&quot;count&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3ref" value="const $name$ = ref($initialValue$)" description="Mpx Ref" toReformat="true" toShortenFQNames="true">
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="initialValue" expression="" defaultValue="&quot;initialValue&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3watch-array" value="watch([$foo$, $bar$], ([new$1$, new$2$], [prev$1$, prev$2$]) =&gt; {&#10;	$3$&#10;})" description="Mpx Composition api - watch as array" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="2" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="3" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="foo" expression="" defaultValue="&quot;foo&quot;" alwaysStopAt="true" />
+    <variable name="bar" expression="" defaultValue="&quot;bar&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3watch" value="watch(() =&gt; $foo$, (newValue, oldValue) =&gt; {&#10;	$2$&#10;})" description="Mpx Composition api - watcher single source" toReformat="true" toShortenFQNames="true">
+    <variable name="2" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="foo" expression="" defaultValue="&quot;foo&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3watcheffect" value="watchEffect(() =&gt; {&#10;	$1$&#10;})" description="Mpx Composition api - watchEffect" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3reactive-setup" value="import { reactive, toRefs } from &apos;mpx&apos;&#10;&#10;export default {&#10;	setup () {&#10;		const state = reactive({&#10;			$count$: $END$,&#10;		})&#10;	&#10;		return {&#10;			...toRefs(state),&#10;		}&#10;	}&#10;}" description="Mpx Composition API Script with Reactive" toReformat="true" toShortenFQNames="true">
+    <variable name="count" expression="" defaultValue="&quot;count&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vcomputed" value="computed: {&#10;	$name$() {&#10;		return this.$data$ $END$&#10;	}&#10;}," description="computed value" toReformat="true" toShortenFQNames="true">
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="data" expression="" defaultValue="&quot;data&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vc-direct" value="Mpx.directive(&apos;$directiveName$&apos;, {&#10;	bind(el, binding, vnode) {&#10;		el.style.$arg$ = binding.value.$arg$;&#10;	}&#10;});" description="mpx custom directive" toReformat="true" toShortenFQNames="true">
+    <variable name="directiveName" expression="" defaultValue="&quot;directiveName&quot;" alwaysStopAt="true" />
+    <variable name="arg" expression="" defaultValue="&quot;arg&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vdata" value="data() {&#10;	return {&#10;		$key$: $value$&#10;	}&#10;}," description="Mpx Component Data" toReformat="true" toShortenFQNames="true">
+    <variable name="key" expression="" defaultValue="&quot;key&quot;" alwaysStopAt="true" />
+    <variable name="value" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vdispatch" value="$actionName$() {&#10;	this.\$store$.dispatch(&apos;$actionName$&apos;, $payload$);&#10;}" description="dispatch to mpxx store in methods for action" toReformat="true" toShortenFQNames="true">
+    <variable name="store" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="actionName" expression="" defaultValue="&quot;actionName&quot;" alwaysStopAt="true" />
+    <variable name="payload" expression="" defaultValue="&quot;payload&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vfilter" value="filters: {&#10;	$fnName$: function($value$) {&#10;		return $value$$END$;&#10;	}&#10;}" description="mpx filter" toReformat="true" toShortenFQNames="true">
+    <variable name="fnName" expression="" defaultValue="&quot;fnName&quot;" alwaysStopAt="true" />
+    <variable name="value" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vimport-dynamic" value="$New$ = () =&gt; import(&apos;@/components/$New$.mpx&apos;)" description="Import component that should be lazy loaded" toReformat="true" toShortenFQNames="true">
+    <variable name="New" expression="" defaultValue="&quot;New&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vimport-export" value="import $Name$ from &apos;@/components/$Name$.mpx&apos;;&#10;&#10;export default {&#10;	components: {&#10;		$Name$&#10;	},&#10;};" description="import a component and include it in export default" toReformat="true" toShortenFQNames="true">
+    <variable name="Name" expression="" defaultValue="&quot;Name&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vimport" value="import $New$ from &apos;@/components/$New$.mpx&apos;;" description="Import one component into another" toReformat="true" toShortenFQNames="true">
+    <variable name="New" expression="" defaultValue="&quot;New&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vimport-gsap" value="import gsap from &apos;gsap&apos;;" description="import gsap library" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vimport-lib" value="import { $libName$ } from &apos;$libName$&apos;;" description="import a library" toReformat="true" toShortenFQNames="true">
+    <variable name="libName" expression="" defaultValue="&quot;libName&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vcomponents" value="components: {&#10;	$New$,&#10;}," description="Import one component into another, within export statement" toReformat="true" toShortenFQNames="true">
+    <variable name="New" expression="" defaultValue="&quot;New&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3onbeforemount" value="onBeforeMount(() =&gt; {$1$})" description="Mpx onBeforeMount Lifecycle hook" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3onbeforeunmount" value="onBeforeUnmount(() =&gt; {$1$})" description="(beforeDestroy) Mpx onBeforeUnmount Lifecycle hook" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3onbeforeupdate" value="onBeforeUpdate(() =&gt; {$1$})" description="Mpx onBeforeUpdate Lifecycle hook" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3onerrorcaptured" value="onErrorCaptured(() =&gt; {$1$})" description="Mpx onErrorCaptured Lifecycle hook" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3onmounted" value="onMounted(() =&gt; {$1$})" description="Mpx Mounted Lifecycle hook" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3onunmounted" value="onUnmounted(() =&gt; {$1$})" description="(destroyed) Mpx onUnmounted Lifecycle hook" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="v3onupdated" value="onUpdated(() =&gt; {$1$})" description="Mpx onUpdated Lifecycle hook" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vbeforecreate" value="beforeCreate () {&#10;	$END$;&#10;}," description="beforeCreate lifecycle method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vbeforedestroy" value="beforeDestroy () {&#10;	$END$;&#10;}," description="beforeDestroy lifecycle method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vbeforemount" value="beforeMount () {&#10;	$END$;&#10;}," description="beforeMount lifecycle method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vbeforeupdate" value="beforeUpdate () {&#10;	$END$;&#10;}," description="beforeUpdate lifecycle method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vcreated" value="created () {&#10;	$END$;&#10;}," description="created lifecycle method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vdestroyed" value="destroyed () {&#10;	$END$;&#10;}," description="destroyed lifecycle method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vmounted" value="mounted () {&#10;	$END$;&#10;}," description="mounted lifecycle method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vupdated" value="updated () {&#10;	$END$;&#10;}," description="updated lifecycle method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vmapactions" value="import { mapActions } from &apos;mpxx&apos;;&#10;&#10;export default {&#10;	methods: {&#10;		...mapActions([&#10;			$1$, //also supports payload `this.nameOfAction(amount)` &#10;		])&#10;	},&#10;};" description="mapactions inside a mpx component" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;'nameOfAction'&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vmapgetters" value="import { mapGetters } from &apos;mpxx&apos;;&#10;&#10;export default {&#10;	computed: {&#10;		...mapGetters([&#10;			$1$,&#10;		])&#10;	},&#10;};" description="mapgetters inside a mpx component" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;'nameOfGetter'&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vmapmutations" value="import { mapMutations } from &apos;mpxx&apos;;&#10;&#10;export default {&#10;	methods: {&#10;		...mapMutations([&#10;			$1$, //also supports payload `this.nameOfMutation(amount)` &#10;		])&#10;	},&#10;};" description="mapmutations inside a mpx component" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;'nameOfMutation'&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vmapstate" value="import { mapState } from &apos;mpxx&apos;;&#10;&#10;export default {&#10;	computed: {&#10;		...mapState([&#10;			$1$,&#10;		])&#10;	},&#10;};" description="map getters inside a mpx component" toReformat="true" toShortenFQNames="true">
+    <variable name="1" expression="" defaultValue="&quot;'nameOfState'&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vmethod" value="methods: {&#10;	$name$() {&#10;		$END$&#10;	}&#10;}," description="mpx method" toReformat="true" toShortenFQNames="true">
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vmixin" value="const $mixinName$ = {&#10;	mounted() {&#10;		console.log(&apos;hello from mixin!&apos;);&#10;	},&#10;};" description="mpx mixin" toReformat="true" toShortenFQNames="true">
+    <variable name="mixinName" expression="" defaultValue="&quot;mixinName&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vprops" value="props: {&#10;	$propName$: {&#10;		type: $Number$,&#10;		default: $END$&#10;	},&#10;}," description="Mpx Props with Default" toReformat="true" toShortenFQNames="true">
+    <variable name="propName" expression="" defaultValue="&quot;propName&quot;" alwaysStopAt="true" />
+    <variable name="Number" expression="" defaultValue="&quot;Number&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vanimhook-js" value="beforeEnter(el) {&#10;	console.log(&apos;beforeEnter&apos;);&#10;},&#10;enter(el, done) {&#10;	console.log(&apos;enter&apos;);&#10;	done();&#10;},&#10;beforeLeave(el) {&#10;	console.log(&apos;beforeLeave&apos;);&#10;},&#10;leave(el, done) {&#10;	console.log(&apos;leave&apos;);&#10;	done();&#10;}," description="transition component js hooks" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vmixin-use" value="mixins: [$mixinName$]," description="mpx use mixin" toReformat="true" toShortenFQNames="true">
+    <variable name="mixinName" expression="" defaultValue="&quot;mixinName&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vwatcher" value="watch: {&#10;	$data$($newValue$, $oldValue$) {&#10;		$END$&#10;	}&#10;}," description="mpx watcher" toReformat="true" toShortenFQNames="true">
+    <variable name="data" expression="" defaultValue="&quot;data&quot;" alwaysStopAt="true" />
+    <variable name="newValue" expression="" defaultValue="&quot;newValue&quot;" alwaysStopAt="true" />
+    <variable name="oldValue" expression="" defaultValue="&quot;oldValue&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vwatcher-options" value="watch: {&#10;	$data$: {&#10;		immediate: $true$,&#10;		deep: $true$,&#10;		handler($newValue$, $oldValue$) {&#10;			$END$&#10;		}&#10;	}&#10;}," description="mpx watcher with options" toReformat="true" toShortenFQNames="true">
+    <variable name="data" expression="" defaultValue="&quot;data&quot;" alwaysStopAt="true" />
+    <variable name="true" expression="" defaultValue="&quot;true&quot;" alwaysStopAt="true" />
+    <variable name="newValue" expression="" defaultValue="&quot;newValue&quot;" alwaysStopAt="true" />
+    <variable name="oldValue" expression="" defaultValue="&quot;oldValue&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vconfig" value="module.exports = {&#10;	css: {&#10;		loaderOptions: {&#10;			$sass$: {&#10;				data: `$2$`&#10;			}&#10;		}&#10;	}&#10;}" description="mpx.config.js" toReformat="true" toShortenFQNames="true">
+    <variable name="2" expression="" defaultValue="&quot;@import '@/styles/_variables.scss';&quot;" alwaysStopAt="true" />
+    <variable name="sass" expression="" defaultValue="&quot;sass&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-script" value="true" />
+    </context>
+  </template>
+  <template name="vclass" value="&lt;$div$ :class=&quot;{ $className$: $data$ }&quot;&gt;&lt;/$div$&gt;" description="mpx class binding" toReformat="true" toShortenFQNames="true">
+    <variable name="div" expression="" defaultValue="&quot;div&quot;" alwaysStopAt="true" />
+    <variable name="className" expression="" defaultValue="&quot;className&quot;" alwaysStopAt="true" />
+    <variable name="data" expression="" defaultValue="&quot;data&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vclass-obj" value="&lt;$div$ :class=&quot;[$classNameA$, $classNameB$]&quot;&gt;&lt;/$div$&gt;" description="mpx class binding" toReformat="true" toShortenFQNames="true">
+    <variable name="div" expression="" defaultValue="&quot;div&quot;" alwaysStopAt="true" />
+    <variable name="classNameA" expression="" defaultValue="&quot;classNameA&quot;" alwaysStopAt="true" />
+    <variable name="classNameB" expression="" defaultValue="&quot;classNameB&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vel-props" value="&lt;$component$ :$propName$=&quot;$END$&quot;&gt;&lt;/$component$&gt;" description="component element with props" toReformat="true" toShortenFQNames="true">
+    <variable name="component" expression="" defaultValue="&quot;component&quot;" alwaysStopAt="true" />
+    <variable name="propName" expression="" defaultValue="&quot;propName&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vemit-child" value="@change=&quot;$emit$(&apos;change&apos;, $event$.target.value)&quot;" description="Mpx Emit from Child Component" toReformat="true" toShortenFQNames="true">
+    <variable name="emit" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="event" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vemit-parent" value="@change=&quot;$foo$ = $event$&quot;" description="Mpx Emit to Parent Component" toReformat="true" toShortenFQNames="true">
+    <variable name="event" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="foo" expression="" defaultValue="&quot;foo&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vsrc" value="&lt;img :src=&quot;&apos;/path/to/images/&apos; + $fileName$&quot; alt=&quot;$altText$&quot;/&gt;" description="image source binding" toReformat="true" toShortenFQNames="true">
+    <variable name="fileName" expression="" defaultValue="&quot;fileName&quot;" alwaysStopAt="true" />
+    <variable name="altText" expression="" defaultValue="&quot;altText&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vclass-obj-mult" value="&lt;$div$ :class=&quot;[$classNameA$, {$classNameB$ : $condition$}]&quot;&gt;&lt;/$div$&gt;" description="mpx multiple conditional class bindings" toReformat="true" toShortenFQNames="true">
+    <variable name="div" expression="" defaultValue="&quot;div&quot;" alwaysStopAt="true" />
+    <variable name="classNameA" expression="" defaultValue="&quot;classNameA&quot;" alwaysStopAt="true" />
+    <variable name="classNameB" expression="" defaultValue="&quot;classNameB&quot;" alwaysStopAt="true" />
+    <variable name="condition" expression="" defaultValue="&quot;condition&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vroutename" value="&lt;router-link :to=&quot;{name: &apos;$name$&apos;}&quot;&gt;$LinkTitle$&lt;/router-link&gt;" description="Named routing link" toReformat="true" toShortenFQNames="true">
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="LinkTitle" expression="" defaultValue="&quot;LinkTitle&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vroutenameparam" value="&lt;router-link :to=&quot;{name: &apos;$name$&apos;, params:{$id$: &apos;$value$&apos;} }&quot;&gt;$LinkTitle$&lt;/router-link&gt;" description="Named routing link w/ params" toReformat="true" toShortenFQNames="true">
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="id" expression="" defaultValue="&quot;id&quot;" alwaysStopAt="true" />
+    <variable name="value" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
+    <variable name="LinkTitle" expression="" defaultValue="&quot;LinkTitle&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vslot-named" value="&lt;template v-slot:$name$&gt;$defaultcontent$&lt;/template&gt;" description="named slot" toReformat="true" toShortenFQNames="true">
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="defaultcontent" expression="" defaultValue="&quot;defaultcontent&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vnuxtl" value="&lt;nuxt-link to=&quot;/$page$&quot;&gt;$page$&lt;/nuxt-link&gt;" description="nuxt routing link" toReformat="true" toShortenFQNames="true">
+    <variable name="page" expression="" defaultValue="&quot;page&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vroutepath" value="&lt;router-link to=&quot;$path$&quot;&gt;$LinkTitle$&lt;/router-link&gt;" description="Path routing link" toReformat="true" toShortenFQNames="true">
+    <variable name="path" expression="" defaultValue="&quot;path&quot;" alwaysStopAt="true" />
+    <variable name="LinkTitle" expression="" defaultValue="&quot;LinkTitle&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vstyle" value="&lt;$div$ :style=&quot;{ fontSize: $data$ + &apos;px&apos; }&quot;&gt;&lt;/$div$&gt;" description="mpx inline style binding" toReformat="true" toShortenFQNames="true">
+    <variable name="div" expression="" defaultValue="&quot;div&quot;" alwaysStopAt="true" />
+    <variable name="data" expression="" defaultValue="&quot;data&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vstyle-obj" value="&lt;$div$ :style=&quot;[$styleObjectA$, $styleObjectB$]&quot;&gt;&lt;/$div$&gt;" description="mpx inline style binding, objects" toReformat="true" toShortenFQNames="true">
+    <variable name="div" expression="" defaultValue="&quot;div&quot;" alwaysStopAt="true" />
+    <variable name="styleObjectA" expression="" defaultValue="&quot;styleObjectA&quot;" alwaysStopAt="true" />
+    <variable name="styleObjectB" expression="" defaultValue="&quot;styleObjectB&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vanim" value="&lt;transition&#10;	mode=&quot;out-in&quot;&#10;	@before-enter=&quot;beforeEnter&quot;&#10;	@enter=&quot;enter&quot;&#10;&#10;	@before-leave=&quot;beforeLeave&quot;&#10;	@leave=&quot;leave&quot;&#10;	:css=&quot;false&quot;&gt;&#10;&#10;&lt;/transition&gt;" description="transition component js hooks" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vfor" value="&lt;$div$ v-for=&quot;$item$ in $item$s&quot; :key=&quot;$item$.id&quot;&gt;&#10;	{{ $item$ }}&#10;&lt;/$div$&gt;" description="vfor statement" toReformat="true" toShortenFQNames="true">
+    <variable name="div" expression="" defaultValue="&quot;div&quot;" alwaysStopAt="true" />
+    <variable name="item" expression="" defaultValue="&quot;item&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vmodel" value="&lt;input v-model=&quot;$data$&quot; type=&quot;text&quot; /&gt;" description="v-model directive" toReformat="true" toShortenFQNames="true">
+    <variable name="data" expression="" defaultValue="&quot;data&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vmodel-num" value="&lt;input v-model.number=&quot;$numData$&quot; type=&quot;number&quot; step=&quot;1&quot; /&gt;" description="v-model directive number input" toReformat="true" toShortenFQNames="true">
+    <variable name="numData" expression="" defaultValue="&quot;numData&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="von" value="@click=&quot;$handler$($arg$, $event$)&quot;" description="v-on click handler with arguments" toReformat="true" toShortenFQNames="true">
+    <variable name="event" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="handler" expression="" defaultValue="&quot;handler&quot;" alwaysStopAt="true" />
+    <variable name="arg" expression="" defaultValue="&quot;arg&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx-template" value="true" />
+    </context>
+  </template>
+  <template name="vbase" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script&gt;&#10;	export default {&#10;		$END$&#10;	}&#10;&lt;/script&gt;&#10;&#10;&lt;style lang=&quot;scss&quot; scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File with SCSS" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-3" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script&gt;&#10;export default {&#10;	setup () {&#10;		$END$&#10;&#10;		return {}&#10;	}&#10;}&#10;&lt;/script&gt;&#10;&#10;&lt;style lang=&quot;scss&quot; scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File Composition API with SCSS" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-3-reactive" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script&gt;&#10;import { reactive, toRefs } from &apos;mpx&apos;&#10;&#10;export default {&#10;	setup () {&#10;		const state = reactive({&#10;			$count$: $END$,&#10;		})&#10;	&#10;		return {&#10;			...toRefs(state),&#10;		}&#10;	}&#10;}&#10;&lt;/script&gt;&#10;&#10;&lt;style lang=&quot;scss&quot; scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File Composition API with SCSS" toReformat="true" toShortenFQNames="true">
+    <variable name="count" expression="" defaultValue="&quot;count&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-3-ts" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script lang=&quot;ts&quot;&gt;&#10;import { defineComponent } from &apos;mpx&apos;&#10;&#10;export default defineComponent({&#10;	setup () {&#10;		$END$&#10;&#10;		return {}&#10;	}&#10;})&#10;&lt;/script&gt;&#10;&#10;&lt;style scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File Composition API - Typescript" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-3-setup" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script setup&gt;&#10;&#10;&lt;/script&gt;&#10;&#10;&lt;style lang=&quot;scss&quot; scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File Setup Composition API with SCSS" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-3-ts-setup" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script setup lang=&quot;ts&quot;&gt;&#10;&#10;&lt;/script&gt;&#10;&#10;&lt;style scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File Setup Composition API - Typescript" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-ts-class" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script lang=&quot;ts&quot;&gt;&#10;	import { Component, Mpx } from &apos;mpx-property-decorator&apos;;&#10;&#10;	@Component&#10;	export default class $END$ extends Mpx {&#10;		&#10;	}&#10;&lt;/script&gt;&#10;&#10;&lt;style scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File with Class based Typescript format" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-css" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script&gt;&#10;	export default {&#10;		$END$&#10;	}&#10;&lt;/script&gt;&#10;&#10;&lt;style scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File with CSS" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-less" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script&gt;&#10;	export default {&#10;		$END$&#10;	}&#10;&lt;/script&gt;&#10;&#10;&lt;style lang=&quot;less&quot; scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File with PostCSS" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-ns" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script&gt;&#10;	export default {&#10;		$END$&#10;	}&#10;&lt;/script&gt;" description="Base for Mpx File with no styles" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-sass" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script&gt;&#10;	export default {&#10;		$END$&#10;	}&#10;&lt;/script&gt;&#10;&#10;&lt;style lang=&quot;sass&quot; scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File with PostCSS" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-styl" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script&gt;&#10;	export default {&#10;		$END$&#10;	}&#10;&lt;/script&gt;&#10;&#10;&lt;style lang=&quot;stylus&quot; scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File with Stylus" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-ts" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script lang=&quot;ts&quot;&gt;&#10;	import Mpx from &apos;mpx&apos;&#10;&#10;	export default Mpx.extend({&#10;		$END$&#10;	})&#10;&lt;/script&gt;&#10;&#10;&lt;style scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File with Typescript" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+  <template name="vbase-pcss" value="&lt;template&gt;&#10;	&lt;div&gt;&#10;&#10;	&lt;/div&gt;&#10;&lt;/template&gt;&#10;&#10;&lt;script&gt;&#10;	export default {&#10;		$END$&#10;	}&#10;&lt;/script&gt;&#10;&#10;&lt;style lang=&quot;postcss&quot; scoped&gt;&#10;&#10;&lt;/style&gt;" description="Base for Mpx File with PostCSS" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="mpx" value="true" />
+    </context>
+  </template>
+</templateSet>

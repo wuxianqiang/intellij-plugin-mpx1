@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "moduleResolution": "Node",
+    "outDir": "../gen/mpx-service/node_modules/ws-typescript-mpx-plugin",
+    "noImplicitThis": true,
+    "declaration": false,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitReturns": true
+//    "sourceMap": true,
+//    "sourceRoot": "(path-to-repo)/ultimate/contrib/mpxjs/mpx-service"
+  },
+  "include": [
+    "*.ts"
+  ]
+}

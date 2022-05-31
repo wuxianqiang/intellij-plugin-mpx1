@@ -1,0 +1,116 @@
+{
+  "templateSetName": "Mpx",
+  "contextMapping": {
+    "mpx-script-mpxx": "MPX_COMPONENT_DESCRIPTOR",
+    "mpx-script-router": "MPX_SCRIPT",
+    "mpx-script": "MPX_SCRIPT",
+    "mpx-template": "MPX_TEMPLATE",
+    "mpx": "MPX_TOP_LEVEL"
+  },
+  "templates": {
+    "vanim": {
+      "description": "Mpx transition component with JavaScript hooks"
+    },
+    "vanimhook-js": {
+      "descriptionPrefix": "Mpx",
+      "context": [
+        "MPX_COMPONENT_DESCRIPTOR"
+      ]
+    },
+    "vc-direct": {
+      "context": [
+        "JS_STATEMENT",
+        "MPX_SCRIPT"
+      ]
+    },
+    "vcomponents": {
+      "context": [
+        "MPX_COMPONENT_DESCRIPTOR"
+      ]
+    },
+    "vcomputed": {
+      "context": [
+        "MPX_COMPONENT_DESCRIPTOR"
+      ]
+    },
+    "vdata": {
+      "context": [
+        "MPX_COMPONENT_DESCRIPTOR"
+      ]
+    },
+    "vel-props": {
+      "descriptionPrefix": "Mpx"
+    },
+    "vfilter": {
+      "context": [
+        "MPX_COMPONENT_DESCRIPTOR"
+      ]
+    },
+    "vfor": {
+      "description": "Mpx v-for statement"
+    },
+    "vimport-gsap": {
+      "description": "Import GSAP library"
+    },
+    "vmethod": {
+      "context": [
+        "MPX_COMPONENT_DESCRIPTOR"
+      ]
+    },
+    "vmixin": {
+      "context": [
+        "JS_STATEMENT"
+      ]
+    },
+    "vmixin-use": {
+      "context": [
+        "MPX_COMPONENT_DESCRIPTOR"
+      ]
+    },
+    "vmodel": {
+      "descriptionPrefix": "Mpx"
+    },
+    "vmodel-num": {
+      "descriptionPrefix": "Mpx"
+    },
+    "von": {
+      "descriptionPrefix": "Mpx",
+      "context": [
+        "MPX_INSIDE_TAG"
+      ]
+    },
+    "vprops": {
+      "variables": {
+        "Number": {
+          "name": "type",
+          "defaultValue": "Number"
+        },
+        "0": {
+          "name": "default",
+          "defaultValue": "0"
+        }
+      },
+      "context": [
+        "MPX_COMPONENT_DESCRIPTOR"
+      ]
+    },
+    "vsrc": {
+      "descriptionPrefix": "Mpx"
+    },
+    "vstore": {
+      "context": [
+        "MPX_SCRIPT"
+      ]
+    },
+    "vstore-import": {
+      "context": [
+        "MPX_SCRIPT"
+      ]
+    },
+    "vwatcher": {
+      "context": [
+        "MPX_COMPONENT_DESCRIPTOR"
+      ]
+    }
+  }
+}
